@@ -1,0 +1,9 @@
+{% partial 'pos/screen' mode='pin' %}
+
+<h4 class="m-t m-b-sm">Enter PIN</h4>
+
+{% partial 'pos/keypad' %}
+
+<input type="hidden" name="keypad_value" value="" id="keyPadValue" />
+
+<script> POS_MODE = 'auth' </script>

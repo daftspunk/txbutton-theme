@@ -1,0 +1,21 @@
+{% if mode == 'pin' %}
+
+    <div class="screen-control" id="screenControl">
+        <div class="screen-title"><span>Authenticate</span></div>
+        <div class="screen-symbol"><span><i class="icon icon-lock"></i></span></div>
+        <div class="screen-amount"><span></span></div>
+    </div>
+
+    <script> POS_SCREEN = 'pin' </script>
+
+{% else %}
+
+    <div class="screen-control" id="screenControl">
+        <div class="screen-title"><span>Purchase</span></div>
+        <div class="screen-symbol"><span>$</span></div>
+        <div class="screen-amount"><span>0.</span><small>00</small></div>
+    </div>
+
+    <script> POS_SCREEN = 'amount' </script>
+
+{% endif %}

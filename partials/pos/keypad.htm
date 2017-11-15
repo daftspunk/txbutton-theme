@@ -1,0 +1,31 @@
+<div class="keypad-control">
+    <table>
+        <tr>
+            <td onclick="keyPadPush('1')"><span>1</span></td>
+            <td onclick="keyPadPush('2')"><span>2</span></td>
+            <td onclick="keyPadPush('3')"><span>3</span></td>
+        </tr>
+        <tr>
+            <td onclick="keyPadPush('4')"><span>4</span></td>
+            <td onclick="keyPadPush('5')"><span>5</span></td>
+            <td onclick="keyPadPush('6')"><span>6</span></td>
+        </tr>
+        <tr>
+            <td onclick="keyPadPush('7')"><span>7</span></td>
+            <td onclick="keyPadPush('8')"><span>8</span></td>
+            <td onclick="keyPadPush('9')"><span>9</span></td>
+        </tr>
+        <tr>
+            <td onclick="keyPadPush('00')"><span>00</span></td>
+            <td onclick="keyPadPush('0')"><span>0</span></td>
+            <td onclick="keyPadDelete()">
+                <span class="keypad-delete-key">
+                    <i class="icon icon-caret-left"></i><i class="icon icon-window-close"></i>
+                </span>
+            </td>
+        </tr>
+        <tr class="button">
+            <td colspan="3" onclick="keyPadPushOk()"><span>OK</span></td>
+        </tr>
+    </table>
+</div>

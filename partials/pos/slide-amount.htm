@@ -1,0 +1,9 @@
+{% partial 'pos/screen' %}
+
+<h4 class="m-t m-b-sm">Enter amount</h4>
+
+{% partial 'pos/keypad' %}
+
+<input type="hidden" name="keypad_value" value="" id="keyPadValue" />
+
+<script> POS_MODE = 'amount' </script>
