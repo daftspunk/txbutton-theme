@@ -1,0 +1,93 @@
+//
+// Home layout
+//
+
+@import "../theme/boot";
+
+body {
+    background: #2980B9;
+    padding-top: 20px;
+}
+
+.home-page {
+
+    margin-top: 100px;
+    .transition(margin 1s ease);
+
+    &.register-workflow {
+        margin-top: 20px;
+    }
+
+    &.login-workflow {
+        margin-top: 40px;
+    }
+
+    p {
+        color: white;
+    }
+
+    a {
+        color: #ECF0F1;
+        text-decoration: none;
+        &:hover { color: white; }
+    }
+
+    .logo-circle {
+        box-shadow: inset -10px -10px 10px rgba(0,0,0,.3), 0 0 999px rgba(255,255,255,.9);
+        display: block;
+        position: relative;
+        background: white;
+        border-radius: 9999px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+        .transition(background 0.5s ease);
+
+        h1 {
+            color: #555;
+            margin: 0 auto;
+            line-height: 200px;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: bold;
+            .transition(opacity 0.5s ease);
+            span { font-style: italic; }
+        }
+
+        &.loading {
+            background: rgba(255,255,255,.5);
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                width: 100px;
+                height: 100px;
+                background-image: url('../../images/loading-indicator.svg');
+                background-size: 100px 100px;
+                background-position: 50% 50%;
+                .animation(spin 1s linear infinite);
+            }
+
+            h1 { .opacity(.5); }
+        }
+    }
+
+    a.help-popover {
+        margin-left: 3px;
+    }
+
+    p.lead {
+        text-align: center;
+        display: block;
+    }
+
+    p.sub-lead {
+        padding-top: 20px;
+        color: #ECF0F1;
+    }
+}

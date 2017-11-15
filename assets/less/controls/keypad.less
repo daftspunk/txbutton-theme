@@ -1,0 +1,77 @@
+//
+// Keypad control
+//
+
+@keypad-bg: @brand-pos;
+
+.keypad-control {
+    table {
+        margin: auto;
+        width: 100%;
+    }
+
+    tr td {
+        vertical-align: middle;
+        text-align: center;
+        width: 32%;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        > span {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: bold;
+            height: 6rem;
+            line-height: 6rem;
+            cursor: pointer;
+            #gradient > .vertical(@start-color: @keypad-bg; @end-color: darken(@keypad-bg, 7%));
+            color: #fff;
+            border-radius: .5rem;
+            margin: .4rem;
+        }
+    }
+
+    tr td:first-child > span {
+        margin-left: 0;
+    }
+
+    tr td:last-child > span {
+        margin-right: 0;
+    }
+
+    tr.button td {
+        width: 100%;
+        padding-top: 1rem;
+
+        > span {
+            #gradient > .vertical(@start-color: lighten(@keypad-bg, 5%); @end-color: darken(@keypad-bg, 2%));
+        }
+    }
+
+    .keypad-delete-key {
+        font-weight: normal;
+        .icon-caret-left {
+            font-size: 3.2rem;
+            position: relative;
+            top: .35rem;
+            left: .2rem;
+        }
+        .icon-window-close-o {
+            font-size: 1rem;
+        }
+    }
+
+/*    tr td:hover > span {
+        background-color: #999;
+        color: #FFFF00;
+    }*/
+
+    tr td:focus > span,
+    tr td:active > span {
+        #gradient > .vertical(@start-color: #fff; @end-color: #ccc);
+        color: #666;
+    }
+}

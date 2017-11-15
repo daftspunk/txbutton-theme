@@ -1,0 +1,38 @@
+description = "Default layout"
+
+[resources]
+less[] = "layouts/default.less"
+
+[session]
+security = "user"
+redirect = "home"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'site/meta' %}
+    </head>
+    <body ontouchstart="">
+
+        <!-- Header -->
+        <div class="container" id="layout-header-container">
+            {% partial 'site/header' %}
+        </div>
+
+        <!-- Content -->
+        <section id="layout-content">
+            <div class="container">
+                {% page %}
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial "site/footer" %}
+        </footer>
+
+        <!-- Scripts -->
+        {% partial 'site/scripts' %}
+
+    </body>
+</html>

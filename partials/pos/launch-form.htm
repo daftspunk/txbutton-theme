@@ -1,0 +1,105 @@
+{% if posConfigured %}
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Launch Point of Sales Terminal</h4>
+    </div>
+    <div class="modal-body">
+
+        <p class="text-success">POS is ready to use, launch it in a new window using the link below.</p>
+
+        <div class="row">
+            <div class="form-group col-md-9">
+                <label>Web address</label>
+                <input
+                    value="{{ posUrl }}"
+                    type="text"
+                    class="form-control"
+                    disabled />
+            </div>
+            <div class="form-group col-md-3">
+                <label>Pin number</label>
+                <input
+                    value="{{ settings.pos_pin }}"
+                    type="text"
+                    class="form-control"
+                    disabled />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a
+            href="{{ posUrl }}"
+            target="_blank"
+            class="btn btn-success btn-fancy">Launch POS</a>
+        <button
+            class="btn btn-default"
+            data-dismiss="modal">
+            Close
+        </button>
+    </div>
+
+{% else %}
+
+    {{ form_ajax('onSavePosSettings', { flash: 1, class: 'settings-form' }) }}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Point of Sales Setup</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="well">
+                <div class="text-warning">
+                    It looks like this is the first time you're using the POS terminal.
+                    We need a few details to allow access from anywhere using any device!
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Pick a unique web address to bookmark</label>
+                <div class="input-group">
+                    <span class="input-group-addon">{{ 'pos'|page }}/</span>
+                    <input
+                        name="pos_username"
+                        value="{{ settings.pos_username }}"
+                        autocomplete="off"
+                        type="text"
+                        class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Enter a shared staff pin to gain access (3-6 digits)</label>
+                <input
+                    name="pos_pin"
+                    value="{{ settings.pos_pin }}"
+                    autocomplete="off"
+                    type="text"
+                    class="form-control"
+                    style="width: 90px" />
+            </div>
+
+            <p class="help-block">
+                These details can be changed at any time using the Settings tab.
+            </p>
+
+        </div>
+        <div class="modal-footer">
+            <button
+                class="btn btn-success btn-fancy"
+                data-request-flash
+                data-attach-loading
+                data-request="onSavePosSettings"
+                data-request-update="'pos/launch-form': '#posLaunchForm'">
+                Save settings
+            </button>
+            <button
+                class="btn btn-default"
+                data-dismiss="modal">
+                Close
+            </button>
+        </div>
+    {{ form_close() }}
+
+{% endif %}

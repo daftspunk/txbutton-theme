@@ -1,0 +1,50 @@
+//
+// Fancy buttons
+//
+
+.btn-fancy {
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 1), 1px 3px 1px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+    outline: none !important;
+    &:hover { border-color: transparent; }
+
+    &.btn-default {
+        #gradient > .vertical(@start-color: lighten(@btn-default-bg,5%); @end-color: darken(@btn-default-bg,5%));
+        &:hover { background-color: darken(@btn-default-bg, 5%); }
+    }
+    &.btn-primary {
+        #gradient > .vertical(@start-color: lighten(@btn-primary-bg,5%); @end-color: darken(@btn-primary-bg,5%));
+        &:hover { background-color: darken(@btn-primary-bg, 5%); }
+    }
+    &.btn-success {
+        #gradient > .vertical(@start-color: lighten(@btn-success-bg,5%); @end-color: darken(@btn-success-bg,5%));
+        &:hover { background-color: darken(@btn-success-bg, 5%); }
+    }
+    &.btn-info {
+        #gradient > .vertical(@start-color: lighten(@btn-info-bg,5%); @end-color: darken(@btn-info-bg,5%));
+        &:hover { background-color: darken(@btn-info-bg, 5%); }
+    }
+    &.btn-warning {
+        #gradient > .vertical(@start-color: lighten(@btn-warning-bg,5%); @end-color: darken(@btn-warning-bg,5%));
+        &:hover { background-color: darken(@btn-warning-bg, 5%); }
+    }
+    &.btn-danger {
+        #gradient > .vertical(@start-color: lighten(@btn-danger-bg,5%); @end-color: darken(@btn-danger-bg,5%));
+        &:hover { background-color: darken(@btn-danger-bg, 5%); }
+    }
+}
+
+//
+// Nicer forms
+//
+
+.form-control {
+    //-webkit-appearance: none;
+    border: 1px solid @input-border;
+    .box-shadow(@input-box-shadow);
+
+    &:focus {
+        border: 1px solid @input-border-focus;
+        .box-shadow(@input-box-shadow);
+    }
+}

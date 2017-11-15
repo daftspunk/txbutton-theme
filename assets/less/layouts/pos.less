@@ -1,0 +1,179 @@
+//
+// POS layout
+//
+
+@import "../theme/boot";
+
+html {
+    font-size: 70%;
+}
+
+body {
+    background: #222;
+    padding-top: 2.2rem;
+}
+
+// MD
+@media (min-width: 992px) and (max-width: 1199px) {
+    html { font-size: 62.5%; }
+}
+
+// SM
+@media (min-width: 880px) and (max-width: 991px) {
+    html { font-size: 57.5%; }
+}
+
+// XS-SM
+@media (min-width: 768px) and (max-width: 879px) {
+    html { font-size: 55%; }
+}
+
+// XS
+@media (max-width: 767px) {
+    html { font-size: 52.5%; }
+    body:not(.standalone-mode) { padding-top: 0; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: darken(@brand-info, 10%);
+}
+
+h1 { font-size: 4.1rem }
+h2 { font-size: 3.4rem }
+h3 { font-size: 2.8rem }
+h4 { font-size: 2.0rem }
+h5 { font-size: 1.6rem }
+h6 { font-size: 1.4rem }
+
+#layout-content > .pos-container {
+    background: darken(@brand-pos, 10%);
+    padding: 2rem 1rem;
+}
+
+@pay-card-size: 26rem;
+@pay-icon-size: 10rem;
+
+.payment-section {
+    .flip-container, .front, .back {
+        width: @pay-card-size;
+        height: @pay-card-size;
+    }
+
+    .front {
+        background: #fff;
+    }
+    .back {
+        //background: darken(@brand-pos, 15%);
+    }
+
+    .flip-container, .flipper {
+        margin: 0 auto;
+    }
+
+    .payment-status {
+        h4 { display: none; }
+        h4.is-active { display: block; }
+    }
+
+    .payment-qrcode {
+        display: block;
+        padding: 1rem;
+        background: #fff;
+        width: @pay-card-size;
+
+        img {
+            display: none !important;
+        }
+
+        canvas {
+            display: block !important;
+            width: @pay-card-size - 2rem;
+            height: @pay-card-size - 2rem;
+        }
+    }
+
+    .payment-checker {
+        display: block;
+        padding: 1rem;
+        width: @pay-card-size;
+        height: @pay-card-size;
+
+        .payment-progress {
+            margin-top: 1rem;
+
+            .progress {
+                .transition(opacity 0.5s ease);
+                border-radius: 999px;
+            }
+
+            .progress-value > i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                opacity: .1;
+                margin: -(@pay-icon-size / 2) 0 0 -(@pay-icon-size / 2);
+                color: #fff;
+                font-size: @pay-icon-size;
+                width: @pay-icon-size;
+                height: @pay-icon-size;
+                line-height: @pay-icon-size;
+                -webkit-transform: rotate(-10deg);
+                -moz-transform: rotate(-10deg);
+                -ms-transform: rotate(-10deg);
+                -o-transform: rotate(-10deg);
+                transform: rotate(-10deg);
+            }
+
+            .progress-value small {
+                display: block;
+                padding: 0 1.5rem;
+                //width: @pay-card-size - 2rem;
+                //word-break: break-all;
+                //word-wrap: break-word;
+                //line-height: normal;
+                //text-align: center;
+                //-moz-text-align-last: center;
+                //-webkit-text-align-last: center;
+                //text-align-last: center;
+                //margin-top: 4rem;
+                //font-size: 1.9rem;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+
+        .payment-amount {
+            margin-top: 2rem;
+            color: rgba(255,255,255,.5);
+            .amount-paid { color: #fff; }
+        }
+
+        &.loading .payment-progress {
+            position: relative;
+            .progress {
+                opacity: .5;
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                width: 100px;
+                height: 100px;
+                background-image: url('../../images/loading-indicator.svg');
+                background-size: 100px 100px;
+                background-position: 50% 50%;
+                .animation(spin 1s linear infinite);
+            }
+        }
+    }
+
+    .payment-details {
+        display: none;
+    }
+}

@@ -1,0 +1,110 @@
+title = "POS"
+url = "/pos"
+layout = "pos"
+==
+
+{% set address = '19356KxTs9Bw5AAdxens5hoxDSp5bsUKse' %}
+{% set amount = '0.005' %}
+<div class="container pos-container">
+
+    <div class="screen-control" id="screenControl">
+        <div class="screen-title"><span>Purchase</span></div>
+        <div class="screen-symbol"><span>$</span></div>
+        <div class="screen-amount"><span>0.</span><small>00</small></div>
+    </div>
+
+    <div id="sectionAmount">
+        <h4 class="m-t m-b-sm">Enter amount</h4>
+
+        <div class="keypad-control">
+            <table>
+                <tr>
+                    <td onclick="keyPadPush('1')"><span>1</span></td>
+                    <td onclick="keyPadPush('2')"><span>2</span></td>
+                    <td onclick="keyPadPush('3')"><span>3</span></td>
+                </tr>
+                <tr>
+                    <td onclick="keyPadPush('4')"><span>4</span></td>
+                    <td onclick="keyPadPush('5')"><span>5</span></td>
+                    <td onclick="keyPadPush('6')"><span>6</span></td>
+                </tr>
+                <tr>
+                    <td onclick="keyPadPush('7')"><span>7</span></td>
+                    <td onclick="keyPadPush('8')"><span>8</span></td>
+                    <td onclick="keyPadPush('9')"><span>9</span></td>
+                </tr>
+                <tr>
+                    <td onclick="keyPadPush('00')"><span>00</span></td>
+                    <td onclick="keyPadPush('0')"><span>0</span></td>
+                    <td onclick="keyPadDelete()">
+                        <span class="keypad-delete-key">
+                            <i class="icon icon-caret-left"></i><i class="icon icon-window-close"></i>
+                        </span>
+                    </td>
+                </tr>
+                <tr class="button">
+                    <td colspan="3" onclick="keyPadPushOk()"><span>OK</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="sectionTransaction" style="display: none">
+
+        <div class="payment-section m-b-xs">
+            <div id="paymentStatus" class="payment-status">
+                <h4 data-presend class="m-t m-b-sm text-center is-active">Send {{ amount }} BCC</h4>
+                <h4 data-pending class="m-t m-b-sm text-center animate-flicker">Transaction pending</h4>
+                <h4 data-confirm class="m-t m-b-sm text-center">Transaction confirmed</h4>
+            </div>
+
+            <div class="flip-container" id="flipContainer" onclick="flipPaymentCard()">
+                <div class="flipper">
+                    <div class="front">
+                        <div
+                            id="qrcode"
+                            class="payment-qrcode"
+                            data-address="{{ address }}"
+                            data-amount="{{ amount }}"></div>
+                    </div>
+                    <div class="back">
+                        <div class="payment-checker">
+                            <div class="payment-progress">
+                                <div class="progress blue state-0">
+                                    <span class="progress-left">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <span class="progress-right">
+                                        <span class="progress-bar"></span>
+                                    </span>
+                                    <div class="progress-value">
+                                        <i class="icon icon-btc"></i>
+                                        <small>{{ address }}</small>
+                                        <!-- tx --> <!-- 0/6 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="payment-amount text-center">
+                                <span class="amount-paid">0</span>
+                                <span class="amount-divider">/</span>
+                                <span class="amount-due">{{ amount }}</span>
+                            </h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="keypad-control">
+            <table>
+                <tr class="button">
+                    <td colspan="3" onclick="keyPadCheckPayment()"><span>Check payment</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<input type="hidden" name="keypad_value" value="" id="keyPadValue" />

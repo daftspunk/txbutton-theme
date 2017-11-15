@@ -1,0 +1,62 @@
+{% set canEdit = replaceMode or not wallet %}
+
+{{ form_open() }}
+    <div class="well">
+        <div class="form-group">
+            <label>XPUB key</label>
+            {% if canEdit %}
+                <p class="help-block">Make sure you are using a newly created wallet</p>
+            {% else %}
+                <p class="help-block">Replacing this active key will not affect existing transactions</p>
+            {% endif %}
+
+            <input
+                {{ not canEdit ? 'disabled' }}
+                name="xpub"
+                value="{{ xpub }}"
+                autocomplete="off"
+                type="text"
+                class="form-control" />
+        </div>
+
+        {% if canEdit %}
+            <button
+                class="btn btn-primary btn-fancy"
+                data-request="onCheckKey"
+                data-request-flash
+                data-attach-loading
+                data-request-update="'settings/wallet-info':'#partialSettingsWalletInfo'">
+                Check key
+            </button>
+            <button
+                class="btn btn-success btn-fancy"
+                {{ not isChecked ? 'disabled' }}
+                data-request="onSaveKey"
+                data-request-flash
+                data-attach-loading
+                data-request-update="'settings/wallet-info':'#partialSettingsWalletInfo'">
+                Save key
+            </button>
+        {% else %}
+            <button
+                class="btn btn-danger btn-fancy"
+                data-request-flash
+                data-attach-loading
+                data-request="onReplaceKey"
+                data-request-update="'settings/wallet-info':'#partialSettingsWalletInfo'">
+                Replace key
+            </button>
+        {% endif %}
+    </div>
+
+    {% if addresses %}
+        <div class="wallet-address-sequence">
+            <h5>Address sequence</h5>
+            <table class="table">
+                {% for index, address in addresses %}
+                    <tr><td><span>{{ index }}</span></td><td><code>{{ address }}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{{ form_close() }}

@@ -1,0 +1,58 @@
+title = "Dash"
+url = "/dash"
+layout = "default"
+
+[resources]
+vars[currentPage] = "dash"
+less[] = "pages/dash.less"
+
+[dashboard]
+==
+<div class="dash-apps">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a
+                href="javascript:;"
+                class="dash-app"
+                data-control="ajax-modal"
+                data-handler="onLaunchPos"
+                data-update-partial="pos/launch-form"
+                data-modal-class="modal-md"
+                data-modal-id="posLaunchForm">
+                <div class="app-image">
+                    <i class="icon icon-television"></i>
+                </div>
+                <div class="app-name">
+                    POS Terminal
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="#" class="dash-app">
+                <div class="app-image">
+                    <i class="icon icon-magic"></i>
+                </div>
+                <div class="app-name">
+                    Button Generator
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="{{ 'settings/wallet'|page }}" class="dash-app">
+                <div class="app-image">
+                    <i class="icon icon-btc"></i>
+                </div>
+                <div class="app-name">
+                    Wallet Settings
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        </div>
+    </div>
+</div>
+
+<div class="dash-sales">
+    <h4 class="text-center">Recent sales</h4>
+    <p class="text-muted text-center">Nothing to show since there are no transactions.</p>
+</div>

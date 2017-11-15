@@ -1,0 +1,40 @@
+title = "Wallet Settings"
+url = "/settings/wallet"
+layout = "default"
+
+[resources]
+vars[currentPage] = "settings"
+less[] = "pages/settings.less"
+
+[walletSettings]
+==
+<div class="row">
+    <div class="col-md-2 text-center hidden-sm hidden-xs">
+        <i class="icon icon-btc"></i>
+    </div>
+    <div class="col-lg-8 col-md-9">
+        <h4>Select your bitcoin wallet provider for instructions</h4>
+        <select class="form-control">
+            <option>-- select --</option>
+            <optgroup label="Hardware wallets">
+                <option>TREZOR</option>
+            </optgroup>
+            <optgroup label="Software wallets">
+                <option>Bitcoin.com</option>
+            </optgroup>
+        </select>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-2 text-center hidden-sm hidden-xs">
+        <i class="icon icon-key"></i>
+    </div>
+    <div class="col-lg-8 col-md-9">
+        <div id="partialSettingsWalletInfo">
+            {% partial 'settings/wallet-info' %}
+        </div>
+    </div>
+</div>

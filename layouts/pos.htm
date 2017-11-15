@@ -1,0 +1,29 @@
+description = "Default layout"
+
+[resources]
+less[] = "layouts/pos.less"
+js[] = "pages/pos.js"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'site/meta' %}
+        {# http://www.onlywebpro.com/2015/07/19/optimizing-full-screen-mobile-web-app-for-ios/ #}
+        <meta name="apple-mobile-web-app-title" content="Bitcoin POS" />
+        {#
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        #}
+    </head>
+    <body ontouchstart="">
+
+        <!-- Content -->
+        <section id="layout-content">
+            {% page %}
+        </section>
+
+        <!-- Scripts -->
+        {% partial 'site/scripts' %}
+
+    </body>
+</html>

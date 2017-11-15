@@ -1,0 +1,70 @@
+title = "Demonstration"
+url = "/"
+layout = "home"
+
+[resources]
+js[] = "pages/home.js"
+==
+<?
+function onEnter()
+{
+    $rules = [
+        'email'    => 'required|email',
+    ];
+
+    $validation = Validator::make(post(), $rules);
+
+    if ($validation->fails()) {
+        throw new ValidationException($validation);
+    }
+
+    $this['email'] = $email = trim(post('email'));
+    $this['user'] = $user = Auth::findUserByLogin($email);
+
+    if ($user) {
+        return ['#partialEntry' => $this->renderPartial('home/login-form')];
+    }
+    else {
+        return ['#partialEntry' => $this->renderPartial('home/register-form')];
+    }
+}
+
+function onSignin()
+{
+    Auth::authenticate([
+        'login' => post('email'),
+        'password' => post('password')
+    ], true);
+
+    return Redirect::to($this->pageUrl('dash'));
+}
+
+function onRegister()
+{
+    if (!trim(post('name'))) {
+        throw new ValidationException(['name' => 'Please enter your name or business name']);
+    }
+
+    Auth::register([
+        'email' => post('email'),
+        'name' => post('name'),
+        'password_confirmation' => post('password'),
+        'password' => post('password')
+    ], true);
+
+    return Redirect::to($this->pageUrl('dash'));
+}
+?>
+==
+
+<div class="home-page container" id="homePageContainer">
+
+    <div class="logo-circle center-block" id="logoCircle">
+        <h1>
+            <span>tx</span><i class="icon icon-btc"></i>utton
+        </h1>
+    </div>
+
+    <div id="partialEntry">{% partial 'home/entry-form' %}</div>
+
+</div>

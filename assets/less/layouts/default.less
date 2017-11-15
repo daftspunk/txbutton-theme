@@ -1,0 +1,157 @@
+//
+// Default layout
+//
+
+@import "../theme/boot";
+
+body {
+    background: #2980B9;
+}
+
+.stripe-loading-indicator .stripe,
+.stripe-loading-indicator .stripe-loaded {
+    background: #e0e0e0;
+}
+
+#layout-header-container {
+    padding-top: 40px;
+    padding-bottom: 0;
+    position: relative;
+}
+
+@logo-size: 35px;
+
+header#layout-header {
+    position: relative;
+    vertical-align: bottom;
+
+    h1.logo {
+        font-size: 48px;
+        margin: 0;
+        color: white;
+        font-weight: bold;
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+
+            &:hover {
+                i, span { opacity: 1; }
+            }
+            &:active {
+                i, span { top: 1px; left: 1px; }
+            }
+
+            i, span { opacity: .9; position: relative; }
+
+            em {
+                display: inline-block;
+                position: relative;
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 18px;
+                    right: -34px;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 999px;
+                    box-shadow: 0 0 99px #fff;
+                }
+            }
+        }
+    }
+
+    i.logo-icon + span {
+        margin-left: -1px;
+    }
+
+    i.logo-icon {
+        width: @logo-size;
+        height: @logo-size;
+        display: inline-block;
+        position: relative;
+
+        &:before, &:after {
+            .transition(opacity 0.5s ease);
+        }
+
+        &:after {
+            opacity: 0;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -17px;
+            margin-top: -11px;
+            width: @logo-size;
+            height: @logo-size;
+            background-image: url('../../images/loading-indicator.svg');
+            background-size: @logo-size @logo-size;
+            background-position: 50% 50%;
+            .animation(spin 1s linear infinite);
+        }
+    }
+
+    &.loading {
+        i.logo-icon {
+            &:before {
+                opacity: .5;
+            }
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+nav#layout-nav {
+    * {
+        border-color: transparent !important; 
+    }
+    ul {
+        margin-top: 15px;
+    }
+    li {
+        margin: 0 5px;
+
+        a {
+            color: white;
+            font-size: 18px;
+            &:hover {
+                color: #C0392B;
+            }
+            &:focus {
+                color: darken(#C0392B, 20%);
+            }
+        }
+        &.active {
+            a {
+                color: #C0392B;
+                #gradient > .vertical(@start-color: #fff; @end-color: #f9f9f9);
+            }
+        }
+    }
+}
+
+section#layout-content .container {
+    box-shadow: inset -10px -10px 10px rgba(0,0,0,.3);
+    background: white;
+    border-radius: 5px;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    top: -2px;
+    min-height: 400px;
+    background: #f9f9f9;
+}
+
+footer#layout-footer {
+    padding: 20px 0;
+    color: #ECF0F1;
+
+    a { color: #ECF0F1;
+        &:hover { color: #BDC3C7; }
+    }
+}

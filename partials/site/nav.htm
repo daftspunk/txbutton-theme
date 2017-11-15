@@ -1,0 +1,12 @@
+{% set 
+    items = {
+        'dash': ['dash', 'Dashboard'],
+        'settings': ['settings', 'Settings'],
+    }
+%}
+
+{% for index, item in items %}
+    <li class="{% if index == currentPage %}active{% endif %}"><a href="{{ item[0]|page }}">{{ item[1] }}</a></li>
+{% endfor %}
+
+<li><a href="javascript:;" data-request="onLogout">Logout</a></li>
