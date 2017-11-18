@@ -83,6 +83,16 @@
         }
     }
 
+    tr.button.is-disabled td:focus,
+    tr.button.is-disabled td:active,
+    tr.button.is-disabled td {
+        > span {
+            opacity: .4;
+            color: rgba(255,255,255,.5);
+            background: @keypad-bg;
+        }
+    }
+
     tr.button.is-loading td:focus,
     tr.button.is-loading td:active,
     tr.button.is-loading td {

@@ -7,3 +7,7 @@ layout = "pos"
 <div class="container pos-container" id="posContainer">
     {% partial 'pos/slide' %}
 </div>
+
+{% if not posWallet %}
+    <script> posMissingWallet() </script>
+{% endif %}

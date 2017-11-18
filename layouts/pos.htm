@@ -17,6 +17,8 @@ js[] = "pages/pos/pos.transaction.js"
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         #}
+        <!-- Scripts -->
+        {% partial 'site/scripts' %}
     </head>
     <body ontouchstart="">
 
@@ -24,9 +26,6 @@ js[] = "pages/pos/pos.transaction.js"
         <section id="layout-content">
             {% page %}
         </section>
-
-        <!-- Scripts -->
-        {% partial 'site/scripts' %}
 
     </body>
 </html>

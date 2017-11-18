@@ -1,5 +1,17 @@
 var POS_MODE, POS_SCREEN
 
+function posMissingWallet() {
+    if (POS_MODE != 'amount') {
+        return
+    }
+
+    var $screen = $('#screenControl')
+    $screen.addClass('has-error')
+    $('#keyPadPushPrimary').addClass('is-disabled')
+
+    $('.screen-error > span', $screen).text('Error - Check wallet')
+}
+
 //
 // Keypad
 //
@@ -43,6 +55,10 @@ function keyPadPushPrimary() {
     var $button = $('#keyPadPushPrimary')
 
     if ($button.hasClass('is-loading')) {
+        return
+    }
+
+    if ($button.hasClass('is-disabled')) {
         return
     }
 

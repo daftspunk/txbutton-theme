@@ -14,7 +14,6 @@ less[] = "pages/settings.less"
     </div>
     <div class="col-lg-8 col-md-9">
         {{ form_ajax('onSaveSettings', { flash: 1, class: 'settings-form' }) }}
-            <!-- <h4>Account settings</h4> -->
 
             <div class="form-group">
                 <label>Wallet setup</label>
@@ -39,6 +38,7 @@ less[] = "pages/settings.less"
                 </select>
             </div>
 
+            {#
             <div class="form-group">
                 <label>Required confirmations</label>
                 <p class="help-block">Number of confirmations before a sale is considered paid.</p>
@@ -50,6 +50,7 @@ less[] = "pages/settings.less"
                     class="form-control"
                     style="width: 90px" />
             </div>
+            #}
 
             <div class="form-group">
                 <label>Username (POS)</label>

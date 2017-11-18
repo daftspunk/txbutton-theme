@@ -1,4 +1,4 @@
-{% partial 'pos/screen' %}
+{% partial 'pos/screen' screenTitle = 'Sale #' ~ saleIndex %}
 
 <div class="payment-section m-b-xs">
     <div id="paymentStatus" class="payment-status">
@@ -19,7 +19,7 @@
             <div class="back">
                 <div class="payment-checker">
                     <div class="payment-progress">
-                        <div class="progress progress-circle blue state-100">
+                        <div class="progress progress-circle blue state-0">
                             <span class="progress-left">
                                 <span class="progress-bar"></span>
                             </span>

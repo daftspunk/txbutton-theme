@@ -33,7 +33,7 @@
 {% else %}
 
     <div class="screen-control" id="screenControl">
-        <div class="screen-title"><span>Purchase</span></div>
+        <div class="screen-title"><span>{{ screenTitle ?: 'Purchase' }}</span></div>
         <div class="screen-error"><span>Error</span></div>
         <div class="screen-symbol"><span>$</span></div>
         <div class="screen-amount"><span>{{ amountDollars }}.</span><small>{{ amountCents }}</small></div>

@@ -2,7 +2,6 @@
 // Transaction
 //
 
-
 function flipPaymentCard(force) {
     $('#flipContainer').toggleClass('is-flipped', force)
 }
