@@ -37,4 +37,34 @@
             font-size: 3rem;
         }
     }
+
+    .screen-error {
+        display: none;
+        position: absolute;
+        top: .3rem;
+        right: 1.5rem;
+        color: #d9534f;
+        text-align: right;
+        > span { font-size: 1.6rem; }
+    }
+
+    &.has-success {
+        background: #dff0d8;
+        .screen-title {
+            color: #5cb85c;
+        }
+    }
+
+    &.has-error {
+        background: #f2dede;
+        .screen-symbol {
+            color: #d9534f;
+        }
+        .screen-title {
+            display: none;
+        }
+        .screen-error {
+            display: block;
+        }
+    }
 }

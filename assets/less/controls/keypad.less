@@ -64,14 +64,45 @@
         }
     }
 
-/*    tr td:hover > span {
-        background-color: #999;
-        color: #FFFF00;
-    }*/
-
     tr td:focus > span,
     tr td:active > span {
         #gradient > .vertical(@start-color: #fff; @end-color: #ccc);
         color: #666;
+    }
+
+    tr.button.primary-button {
+        td > span {
+            &:before {
+                content: 'OK';
+            }
+        }
+        &.is-confirm {
+            td > span {
+                &:before { content: 'Confirm'; }
+            }
+        }
+    }
+
+    tr.button.is-loading td:focus,
+    tr.button.is-loading td:active,
+    tr.button.is-loading td {
+        > span {
+            color: rgba(255,255,255,.5);
+            background: @keypad-bg;
+            &:after {
+                color: #fff;
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: .4em;
+                height: 1em;
+                width: 1em;
+                animation: oc-rotate-loader 0.8s infinite linear;
+                border: .2em solid currentColor;
+                border-right-color: transparent;
+                border-radius: 50%;
+                margin-top: -.1em;
+            }
+        }
     }
 }

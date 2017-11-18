@@ -1,0 +1,9 @@
+{% if slideMode == 'username' %}
+    {% partial 'pos/slide-username' %}
+{% elseif slideMode == 'auth' %}
+    {% partial 'pos/slide-auth' %}
+{% elseif slideMode == 'transaction' %}
+    {% partial 'pos/slide-transaction' %}
+{% else %}
+    {% partial 'pos/slide-amount' %}
+{% endif %}

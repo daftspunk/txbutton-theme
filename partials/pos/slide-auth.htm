@@ -1,9 +1,17 @@
-{% partial 'pos/screen' mode='pin' %}
+{{ form_ajax('onCheckPin', {
+    id: 'posAuthForm',
+    flash: 1,
+    update: {
+        'pos/slide': '#posContainer'
+    }
+}) }}
 
-<h4 class="m-t m-b-sm">Enter PIN</h4>
+    {% partial 'pos/screen' screenMode='pin' %}
 
-{% partial 'pos/keypad' %}
+    <h4 class="m-t m-b-sm">Enter PIN</h4>
 
-<input type="hidden" name="keypad_value" value="" id="keyPadValue" />
+    {% partial 'pos/keypad' %}
+
+{{ form_close() }}
 
 <script> POS_MODE = 'auth' </script>

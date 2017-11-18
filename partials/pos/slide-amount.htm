@@ -1,9 +1,13 @@
-{% partial 'pos/screen' %}
+{{ form_ajax('onAjax', { id: 'posAmountForm', flash: 1 }) }}
 
-<h4 class="m-t m-b-sm">Enter amount</h4>
+    <div id="partialPosScreen">
+        {% partial 'pos/screen' %}
+    </div>
 
-{% partial 'pos/keypad' %}
+    <h4 class="m-t m-b-sm">Enter amount</h4>
 
-<input type="hidden" name="keypad_value" value="" id="keyPadValue" />
+    {% partial 'pos/keypad' %}
+
+{{ form_close() }}
 
 <script> POS_MODE = 'amount' </script>

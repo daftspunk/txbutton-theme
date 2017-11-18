@@ -24,8 +24,10 @@
                 </span>
             </td>
         </tr>
-        <tr class="button">
-            <td colspan="3" onclick="keyPadPushOk()"><span>OK</span></td>
+        <tr class="button primary-button" id="keyPadPushPrimary">
+            <td colspan="3" onclick="keyPadPushPrimary()"><span></span></td>
         </tr>
     </table>
 </div>
+
+<input type="hidden" name="keypad_value" value="" id="keyPadValue" />

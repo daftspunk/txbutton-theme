@@ -1,0 +1,29 @@
+{{ form_ajax('onCheckUsername', { flash: 1 }) }}
+
+    <h4 class="m-t m-b">Enter username</h4>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">{{ 'pos'|page }}/</span>
+            <input
+                name="username"
+                value="{{ posUsername }}"
+                autocomplete="off"
+                type="text"
+                class="form-control input-lg" />
+        </div>
+    </div>
+
+    <div class="keypad-control">
+        <table>
+            <tr class="button" id="keyPadPushPrimary">
+                <td colspan="3" onclick="keyPadPushPrimary()"><span>Launch POS</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <p class="help-block">If you don't have a POS username, create one <a href="{{ 'dash'|page }}">from your account dashboard</a>.</p>
+
+{{ form_close() }}
+
+<script> POS_MODE = 'username' </script>

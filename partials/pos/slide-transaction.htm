@@ -2,7 +2,7 @@
 
 <div class="payment-section m-b-xs">
     <div id="paymentStatus" class="payment-status">
-        <h4 data-presend class="m-t m-b-sm text-center is-active">Send {{ amount }} BCC</h4>
+        <h4 data-presend class="m-t m-b-sm text-center is-active">Send {{ amountCoin }} BCH</h4>
         <h4 data-pending class="m-t m-b-sm text-center animate-flicker">Transaction pending</h4>
         <h4 data-confirm class="m-t m-b-sm text-center">Transaction confirmed</h4>
     </div>
@@ -14,12 +14,12 @@
                     id="qrcode"
                     class="payment-qrcode"
                     data-address="{{ address }}"
-                    data-amount="{{ amount }}"></div>
+                    data-amount="{{ amountCoin }}"></div>
             </div>
             <div class="back">
                 <div class="payment-checker">
                     <div class="payment-progress">
-                        <div class="progress blue state-0">
+                        <div class="progress progress-circle blue state-100">
                             <span class="progress-left">
                                 <span class="progress-bar"></span>
                             </span>
@@ -36,7 +36,7 @@
                     <h4 class="payment-amount text-center">
                         <span class="amount-paid">0</span>
                         <span class="amount-divider">/</span>
-                        <span class="amount-due">{{ amount }}</span>
+                        <span class="amount-due">{{ amountCoin }}</span>
                     </h4>
                 </div>
             </div>
@@ -53,4 +53,4 @@
     </table>
 </div>
 
-<script> POS_MODE = 'transaction' </script>
+<script> POS_MODE = 'transaction'; makeQrCode() </script>

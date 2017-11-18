@@ -4,25 +4,57 @@ var POS_MODE, POS_SCREEN
 // Keypad
 //
 
-function keyPadPush(val) {
+function appendKeyPadValue(val) {
     var $keypad = $('#keyPadValue')
 
     if ($keypad.val().length < 9) {
         $keypad.val($keypad.val() + val)
     }
+}
 
+function removeKeyPadValue() {
+    var $keypad = $('#keyPadValue')
+    $keypad.val($keypad.val().slice(0, -1))
+}
+
+function keyPadPush(val) {
+    var $keypad = $('#keyPadValue')
+
+    var _event = jQuery.Event('posKeyPadPush')
+    $keypad.closest('form').trigger(_event, [val])
+    if (_event.isDefaultPrevented()) return
+
+    appendKeyPadValue(val)
     updateScreen()
 }
 
 function keyPadDelete() {
     var $keypad = $('#keyPadValue')
-    $keypad.val($keypad.val().slice(0, -1))
+
+    var _event = jQuery.Event('posKeyPadDelete')
+    $keypad.closest('form').trigger(_event)
+    if (_event.isDefaultPrevented()) return
+
+    removeKeyPadValue()
     updateScreen()
 }
 
-function keyPadPushOk() {
-    $('TODO#sectionAmount').hide()
-    $('TODO#sectionTransaction').show()
+function keyPadPushPrimary() {
+    var $button = $('#keyPadPushPrimary')
+
+    if ($button.hasClass('is-loading')) {
+        return
+    }
+
+    var _event = jQuery.Event('posKeyPadPushOk')
+    $button.closest('form').trigger(_event)
+    if (_event.isDefaultPrevented()) return
+
+    $button.closest('form').submit()
+}
+
+function keyPadLoading(toggle) {
+    $('#keyPadPushPrimary').toggleClass('is-loading', toggle)
 }
 
 //
@@ -57,28 +89,3 @@ function updateScreenPin() {
 
     $('span', $amount).html(Array(val.length + 1).join("*"))
 }
-
-//
-// Amount
-//
-
-function flipPaymentCard(force) {
-    $('#flipContainer').toggleClass('is-flipped', force)
-}
-
-function keyPadCheckPayment() {
-    var $status = $('#paymentStatus')
-    $('[data-presend]', $status).hide()
-    $('[data-pending]', $status).show()
-    flipPaymentCard(true)
-}
-
-function makeQrCode() {
-    generateQR($('#qrcode'))
-}
-
-makeQrCode()
-
-//
-// Transaction
-//
