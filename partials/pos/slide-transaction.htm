@@ -22,11 +22,16 @@
             <tr class="button is-secondary">
                 <td colspan="3"><a href="https://bitcoincash.blockexplorer.com/address/{{ address }}" target="_blank">View on blockchain</a></td>
             </tr>
-            {#
             <tr class="button is-secondary">
-                <td colspan="3" onclick="keyPadNewPayment()"><a>Add sale notes</a></td>
+                <td colspan="3"><a
+                    data-control="ajax-modal"
+                    data-handler="onLaunchSalesNotes"
+                    data-update-partial="pos/sale-notes-form"
+                    data-modal-class="modal-lg"
+                    data-modal-id="posLaunchSaleNotes"
+                    data-request-data="sale_hash: '{{ sale.hash }}'"
+                    >Add sale notes</a></td>
             </tr>
-            #}
             <tr class="button is-secondary">
                 <td colspan="3" onclick="keyPadNewPayment()"><a>Make another payment</a></td>
             </tr>
