@@ -45,12 +45,14 @@ function onRegister()
         throw new ValidationException(['name' => 'Please enter your name or business name']);
     }
 
-    Auth::register([
+    $user = Auth::register([
         'email' => post('email'),
         'name' => post('name'),
         'password_confirmation' => post('password'),
         'password' => post('password')
     ], true);
+
+    Auth::login($user);
 
     return Redirect::to($this->pageUrl('dash'));
 }
