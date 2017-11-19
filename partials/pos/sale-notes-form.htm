@@ -10,6 +10,7 @@
 
         <div class="form-group">
             <textarea
+                id="saleNotes"
                 name="notes"
                 class="form-control"
                 style="resize: none;"
@@ -35,3 +36,5 @@
     <input type="hidden" name="sale_hash" value="{{ sale.hash }}" />
 
 {{ form_close() }}
+
+<script> $('#saleNotes').focus() </script>
