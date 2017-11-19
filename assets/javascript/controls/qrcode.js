@@ -23,7 +23,7 @@ function generateQR($el) {
 }
 
 function buildBitcoinURI(address, amount, label, message) {
-    var tmpl = ["bitcoin:", address, "?"];
+    var tmpl = ["bitcoincash:", address, "?"];
 
     if(amount) {
         tmpl = tmpl.concat(["amount=", encodeURIComponent(amount), "&"]);
