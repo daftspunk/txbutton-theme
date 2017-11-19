@@ -18,7 +18,7 @@
                         {{ sale.coin_address }}
                     </a>
                 </td>
-                <td  class="text-right">{{ sale.fiat_price|currency({ in: sale.fiat_currency, format: 'short' }) }} <small>{{ sale.fiat_currency }}</small></td>
+                <td  class="text-right">{{ sale.fiat_price|currency({ in: sale.fiat_currency }) }} <small>{{ sale.fiat_currency }}</small></td>
                 <td class="text-center"><i class="icon icon-{{ sale.is_paid ? 'check' : 'times' }}"></i></td>
             </tr>
             {% if sale.notes %}
