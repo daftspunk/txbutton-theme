@@ -1,0 +1,87 @@
+{% if success %}
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Thanks for your feedback!</h4>
+    </div>
+    <div class="modal-body">
+        <p>
+            Please bear in mind we receive a lot of feedback, it may take several days to process and you may not receive a response.
+            Not to worry though, all feedback we receive will be read and action taken if needed.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button
+            class="btn btn-default"
+            data-dismiss="modal">
+            Close
+        </button>
+    </div>
+
+{% else %}
+    {{ form_ajax('onSubmitFeedback', {
+        id: 'feedbackForm',
+        flash: 1,
+        class: 'contact-form',
+        update: { 'site/contact-form': '#modalFeedbackForm' }
+    }) }}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Provide us with your feedback</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <textarea
+                    name="comments"
+                    rows="5"
+                    style="resize: none"
+                    placeholder="Enter a short message to the site administrators"
+                    class="form-control"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Name <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            value="{{ session.user.name }}"
+                            class="form-control"
+                            required
+                            placeholder="Enter your name" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Email <span class="required">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                value="{{ session.user.email }}"
+                                class="form-control"
+                                required
+                                placeholder="Enter your email address" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button
+                class="btn btn-default"
+                data-dismiss="modal">
+                Close
+            </button>
+            <button
+                class="btn btn-success"
+                data-attach-loading>
+                Submit feedback
+            </button>
+        </div>
+    {{ form_close() }}
+
+{% endif %}

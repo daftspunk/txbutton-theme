@@ -28,7 +28,7 @@ less[] = "pages/dash.less"
             </a>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="#" class="dash-app">
+            <a href="{{ 'button'|page }}" class="dash-app">
                 <div class="app-image">
                     <i class="icon icon-magic"></i>
                 </div>
@@ -54,5 +54,9 @@ less[] = "pages/dash.less"
 
 <div class="dash-sales">
     <h4 class="text-center">Recent sales</h4>
-    <p class="text-muted text-center">Nothing to show since there are no transactions.</p>
+    {% if sales|length %}
+        {% partial 'dash/sales-table' %}
+    {% else %}
+        <p class="text-muted text-center">Nothing to show since there are no transactions.</p>
+    {% endif %}
 </div>

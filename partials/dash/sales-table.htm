@@ -1,0 +1,37 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Sale ID</th>
+            <th>Address</th>
+            <th class="text-right">Amount</th>
+            <th class="text-center">Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+            <tr>
+                <td>{{ sale.created_at.toFormattedDateString }}</td>
+                <td>{{ sale.sale_index }}</td>
+                <td>
+                    <a href="https://bitcoincash.blockexplorer.com/address/{{ sale.coin_address }}" target="_blank">
+                        {{ sale.coin_address }}
+                    </a>
+                </td>
+                <td  class="text-right">{{ sale.fiat_price|currency({ format: 'short' }) }} <small>{{ sale.fiat_currency }}</small></td>
+                <td class="text-center"><i class="icon icon-{{ sale.is_paid ? 'check' : 'times' }}"></i></td>
+            </tr>
+            {% if sale.notes %}
+                <tr>
+                    <td></td>
+                    <td>
+                        <strong>Notes</strong>
+                    </td>
+                    <td colspan="100">
+                        <em>{{ sale.notes }}</em>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>

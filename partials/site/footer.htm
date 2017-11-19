@@ -8,7 +8,18 @@
         </div>
         <div class="col-sm-3">
             <ul class="list-inline pull-right">
-                <li><a href="http://twitter.com/daftspunk" target="_blank">Provide Feedback</a></li>
+                <li>
+                    <i class="icon icon-comment"></i>
+                    <a
+                        href="javascript:;"
+                        class="feedback-button"
+                        data-control="ajax-modal"
+                        data-handler="onLoadSubmitFeedbackForm"
+                        data-update-partial="site/contact-form"
+                        data-modal-id="modalFeedbackForm">
+                        Provide feedback
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
