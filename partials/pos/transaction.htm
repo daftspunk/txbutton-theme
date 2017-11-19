@@ -1,0 +1,20 @@
+<div class="payment-section m-b-xs state-{{ statusState }}">
+    <div class="payment-status" id="partialPosTransactionStatus">
+        {% partial 'pos/transaction-status' %}
+    </div>
+
+    <div class="flip-container" id="flipContainer" onclick="flipPaymentCard()">
+        <div class="flipper">
+            <div class="front">
+                <div
+                    id="qrcode"
+                    class="payment-qrcode"
+                    data-address="{{ address }}"
+                    data-amount="{{ amountCoin }}"></div>
+            </div>
+            <div class="back" id="partialPosTransactionProgress">
+                {% partial 'pos/transaction-progress' %}
+            </div>
+        </div>
+    </div>
+</div>

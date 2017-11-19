@@ -70,11 +70,6 @@ h6 { font-size: 1.4rem }
         margin: 0 auto;
     }
 
-    .payment-status {
-        h4 { display: none; }
-        h4.is-active { display: block; }
-    }
-
     .payment-qrcode {
         display: block;
         padding: 1rem;
@@ -173,7 +168,16 @@ h6 { font-size: 1.4rem }
         }
     }
 
-    .payment-details {
-        display: none;
+    .payment-status {
+        .status-confirm {
+            color: #1abc9c;
+        }
+    }
+}
+
+.autocheck-timer {
+    display: none;
+    &.is-active {
+        display: inline-block;
     }
 }

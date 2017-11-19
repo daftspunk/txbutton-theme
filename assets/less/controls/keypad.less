@@ -20,7 +20,8 @@
         -ms-user-select: none;
         user-select: none;
 
-        > span {
+        > a {
+            text-decoration: none;
             display: block;
             font-size: 2.2rem;
             font-weight: bold;
@@ -34,11 +35,11 @@
         }
     }
 
-    tr td:first-child > span {
+    tr td:first-child > a {
         margin-left: 0;
     }
 
-    tr td:last-child > span {
+    tr td:last-child > a {
         margin-right: 0;
     }
 
@@ -46,8 +47,28 @@
         width: 100%;
         padding-top: 1rem;
 
-        > span {
+        > a {
             #gradient > .vertical(@start-color: lighten(@keypad-bg, 5%); @end-color: darken(@keypad-bg, 2%));
+        }
+    }
+
+    tr.divider td {
+        padding: 2rem 0;
+        > span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #222;
+            opacity: .5;
+        }
+    }
+
+    tr.button.is-secondary td {
+        padding-top: .25rem;
+        > a {
+            color: #ccc;
+            #gradient > .vertical(@start-color: @keypad-bg; @end-color: darken(@keypad-bg, 7%));
         }
     }
 
@@ -64,39 +85,39 @@
         }
     }
 
-    tr td:focus > span,
-    tr td:active > span {
-        #gradient > .vertical(@start-color: #fff; @end-color: #ccc);
-        color: #666;
+    tr:not(.is-disabled) td > a:focus,
+    tr:not(.is-disabled) td > a:active {
+        #gradient > .vertical(@start-color: #fff; @end-color: #ccc) !important;
+        color: #666 !important;
     }
 
-    tr.button.primary-button {
-        td > span {
+    tr.button.ok-button {
+        td > a {
             &:before {
                 content: 'OK';
             }
         }
         &.is-confirm {
-            td > span {
+            td > a {
                 &:before { content: 'Confirm'; }
             }
         }
     }
 
-    tr.button.is-disabled td:focus,
-    tr.button.is-disabled td:active,
     tr.button.is-disabled td {
-        > span {
+        > a,
+        > a:focus,
+        > a:active {
             opacity: .4;
             color: rgba(255,255,255,.5);
             background: @keypad-bg;
         }
     }
 
-    tr.button.is-loading td:focus,
-    tr.button.is-loading td:active,
     tr.button.is-loading td {
-        > span {
+        > a,
+        > a:focus,
+        > a:active {
             color: rgba(255,255,255,.5);
             background: @keypad-bg;
             &:after {

@@ -1,7 +1,7 @@
 {% set amount = amount ?: '0.00' %}
 {% set amountCoin = amountCoin ?: '0.0' %}
 {% set amountSplit = amount|split('.') %}
-{% set amountDollars = amountSplit[0] %}
+{% set amountDollars = amountSplit[0]|number_format %}
 {% set amountCents = amountSplit[1] ?: 00 %}
 
 {% if amountCents|length == 1 %}
@@ -22,7 +22,7 @@
 {% elseif screenMode == 'confirm' %}
 
     <div class="screen-control has-success" id="screenControl">
-        <div class="screen-title"><span>Send {{ amountCoin }} BCH</span></div>
+        <div class="screen-title"><span>Confirm {{ amountCoin }} BCH</span></div>
         <div class="screen-error"><span>Error</span></div>
         <div class="screen-symbol"><span>$</span></div>
         <div class="screen-amount"><span>{{ amountDollars }}.</span><small>{{ amountCents }}</small></div>

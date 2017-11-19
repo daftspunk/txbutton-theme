@@ -1,56 +1,40 @@
-{% partial 'pos/screen' screenTitle = 'Sale #' ~ saleIndex %}
+{{ form_ajax('onAjax', { id: 'posTransactionForm', flash: 1 }) }}
 
-<div class="payment-section m-b-xs">
-    <div id="paymentStatus" class="payment-status">
-        <h4 data-presend class="m-t m-b-sm text-center is-active">Send {{ amountCoin }} BCH</h4>
-        <h4 data-pending class="m-t m-b-sm text-center animate-flicker">Transaction pending</h4>
-        <h4 data-confirm class="m-t m-b-sm text-center">Transaction confirmed</h4>
+    {% partial 'pos/screen' screenTitle = 'Sale #' ~ saleIndex %}
+
+    <div id="partialPosTransaction">
+        {% partial 'pos/transaction' %}
     </div>
 
-    <div class="flip-container" id="flipContainer" onclick="flipPaymentCard()">
-        <div class="flipper">
-            <div class="front">
-                <div
-                    id="qrcode"
-                    class="payment-qrcode"
-                    data-address="{{ address }}"
-                    data-amount="{{ amountCoin }}"></div>
-            </div>
-            <div class="back">
-                <div class="payment-checker">
-                    <div class="payment-progress">
-                        <div class="progress progress-circle blue state-0">
-                            <span class="progress-left">
-                                <span class="progress-bar"></span>
-                            </span>
-                            <span class="progress-right">
-                                <span class="progress-bar"></span>
-                            </span>
-                            <div class="progress-value">
-                                <i class="icon icon-btc"></i>
-                                <small>{{ address }}</small>
-                                <!-- tx --> <!-- 0/6 -->
-                            </div>
-                        </div>
-                    </div>
-                    <h4 class="payment-amount text-center">
-                        <span class="amount-paid">0</span>
-                        <span class="amount-divider">/</span>
-                        <span class="amount-due">{{ amountCoin }}</span>
-                    </h4>
-                </div>
-            </div>
-
-        </div>
+    <div class="keypad-control">
+        <table>
+            <tr class="button" id="keyPadPushPrimary">
+                <td colspan="3"><a onclick="keyPadCheckPayment()">Check payment <strong id="autoCheckTimer" class="autocheck-timer">(5)</strong></a></td>
+            </tr>
+        </table>
     </div>
-</div>
 
-<div class="keypad-control">
-    <table>
-        <tr class="button">
-            <td colspan="3" onclick="keyPadCheckPayment()"><span>Check payment</span></td>
-        </tr>
-    </table>
-</div>
+    <div class="keypad-control" id="secondaryMenu" style="display: none">
+        <table>
+            <tr class="divider">
+                <td colspan="3"><span></span></td>
+            </tr>
+            <tr class="button is-secondary">
+                <td colspan="3"><a href="https://bitcoincash.blockexplorer.com/address/{{ address }}" target="_blank">View on blockchain</a></td>
+            </tr>
+            {#
+            <tr class="button is-secondary">
+                <td colspan="3" onclick="keyPadNewPayment()"><a>Add sale notes</a></td>
+            </tr>
+            #}
+            <tr class="button is-secondary">
+                <td colspan="3" onclick="keyPadNewPayment()"><a>Make another payment</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <input type="hidden" name="sale_hash" value="{{ sale.hash }}" />
+
+{{ form_close() }}
 
 <script> POS_MODE = 'transaction'; makeQrCode() </script>

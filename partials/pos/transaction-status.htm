@@ -1,0 +1,12 @@
+{% if statusState == 'presend' %}
+    <h4 data-presend class="m-t m-b-sm text-center status-presend">Send {{ amountCoin }} BCH</h4>
+    <h4 data-pending class="m-t m-b-sm text-center animate-flicker status-pending" style="display: none">Transaction pending</h4>
+{% elseif sale.status_name == 'empty' %}
+    <h4 class="m-t m-b-sm text-center animate-flicker status-pending">Transaction pending</h4>
+{% elseif sale.status_name == 'partial' %}
+    <h4 class="m-t m-b-sm text-center animate-flicker status-pending">Not enough funds sent</h4>
+{% elseif sale.status_name == 'unconfirmed' %}
+    <h4 class="m-t m-b-sm text-center animate-flicker status-unconfirm">Transaction confirming</h4>
+{% elseif sale.status_name == 'confirmed' %}
+    <h4 class="m-t m-b-sm text-center status-confirm">Transaction confirmed</h4>
+{% endif %}

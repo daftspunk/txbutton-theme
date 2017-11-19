@@ -1,0 +1,35 @@
+{% set progressClass = 'blue state-0' %}
+{% if sale.status_name == 'partial' %}
+    {% set progressClass = 'blue state-50' %}
+{% elseif sale.status_name == 'unconfirmed' %}
+    {% set progressClass = 'blue state-100' %}
+{% elseif sale.status_name == 'confirmed' %}
+    {% set progressClass = 'green state-100' %}
+{% endif %}
+
+<div class="payment-checker">
+    <div class="payment-progress">
+        <div class="progress progress-circle {{ progressClass }}">
+            <span class="progress-left">
+                <span class="progress-bar"></span>
+            </span>
+            <span class="progress-right">
+                <span class="progress-bar"></span>
+            </span>
+            <div class="progress-value">
+                <i class="icon icon-btc"></i>
+                <small>{{ address }}</small>
+                <!-- tx --> <!-- 0/6 -->
+            </div>
+        </div>
+    </div>
+    <h4 class="payment-amount text-center">
+        <span class="amount-paid">{{ balance ?: '0.0' }}</span>
+        <span class="amount-divider">/</span>
+        <span class="amount-due">{{ amountCoin }}</span>
+    </h4>
+</div>
+
+{% if sale.is_paid %}
+    <script> makeSalePaid() </script>
+{% endif %}

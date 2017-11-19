@@ -1,31 +1,31 @@
 <div class="keypad-control">
     <table>
         <tr>
-            <td onclick="keyPadPush('1')"><span>1</span></td>
-            <td onclick="keyPadPush('2')"><span>2</span></td>
-            <td onclick="keyPadPush('3')"><span>3</span></td>
+            <td><a onclick="keyPadPush('1')">1</a></td>
+            <td><a onclick="keyPadPush('2')">2</a></td>
+            <td><a onclick="keyPadPush('3')">3</a></td>
         </tr>
         <tr>
-            <td onclick="keyPadPush('4')"><span>4</span></td>
-            <td onclick="keyPadPush('5')"><span>5</span></td>
-            <td onclick="keyPadPush('6')"><span>6</span></td>
+            <td><a onclick="keyPadPush('4')">4</a></td>
+            <td><a onclick="keyPadPush('5')">5</a></td>
+            <td><a onclick="keyPadPush('6')">6</a></td>
         </tr>
         <tr>
-            <td onclick="keyPadPush('7')"><span>7</span></td>
-            <td onclick="keyPadPush('8')"><span>8</span></td>
-            <td onclick="keyPadPush('9')"><span>9</span></td>
+            <td><a onclick="keyPadPush('7')">7</a></td>
+            <td><a onclick="keyPadPush('8')">8</a></td>
+            <td><a onclick="keyPadPush('9')">9</a></td>
         </tr>
         <tr>
-            <td onclick="keyPadPush('00')"><span>00</span></td>
-            <td onclick="keyPadPush('0')"><span>0</span></td>
+            <td><a onclick="keyPadPush('00')">00</a></td>
+            <td><a onclick="keyPadPush('0')">0</a></td>
             <td onclick="keyPadDelete()">
-                <span class="keypad-delete-key">
+                <a class="keypad-delete-key">
                     <i class="icon icon-caret-left"></i><i class="icon icon-window-close"></i>
-                </span>
+                </a>
             </td>
         </tr>
-        <tr class="button primary-button" id="keyPadPushPrimary">
-            <td colspan="3" onclick="keyPadPushPrimary()"><span></span></td>
+        <tr class="button ok-button" id="keyPadPushPrimary">
+            <td colspan="3" onclick="keyPadPushPrimary()"><a></a></td>
         </tr>
     </table>
 </div>
