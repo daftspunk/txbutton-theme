@@ -8,17 +8,41 @@ less[] = "pages/dash.less"
 
 [dashboard]
 ==
+{% if noWallet %}
+<div class="dash-notices">
+    <div class="well">
+        <div class="row">
+            <div class="col-md-2 text-right hidden-sm hidden-xs notice-icon">
+                <img src="{{ 'assets/images/smiley-awesome.png'|theme }}" alt="" />
+            </div>
+            <div class="col-lg-8 col-md-9">
+                <div class="text-warning">
+                    <strong>Hi there, welcome to TXButton!</strong>
+                    Before you can access the features of this site, you'll need to link this account with your bitcoin wallet.
+                    <a href="{{ 'settings/wallet'|page }}">Open your wallet settings</a> to get started.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 <div class="dash-apps">
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <a
                 href="javascript:;"
-                class="dash-app"
+                class="dash-app {{ noWallet ? 'is-disabled' }}"
+                {% if wallet %}
                 data-control="ajax-modal"
                 data-handler="onLaunchPos"
                 data-update-partial="dash/pos-launch-form"
                 data-modal-class="modal-md"
-                data-modal-id="posLaunchForm">
+                data-modal-id="posLaunchForm"
+                {% else %}
+                data-toggle="tooltip"
+                title="Link your bitcoin wallet to unlock this feature."
+                {% endif %}
+                >
                 <div class="app-image">
                     <i class="icon icon-television"></i>
                 </div>
@@ -28,7 +52,15 @@ less[] = "pages/dash.less"
             </a>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <a href="{{ 'button'|page }}" class="dash-app">
+            <a
+                {% if wallet %}
+                href="{{ 'button'|page }}"
+                {% else %}
+                href="javascript:;"
+                data-toggle="tooltip"
+                title="Link your bitcoin wallet to unlock this feature."
+                {% endif %}
+                class="dash-app {{ noWallet ? 'is-disabled' }}">
                 <div class="app-image">
                     <i class="icon icon-magic"></i>
                 </div>

@@ -14,15 +14,21 @@ less[] = "pages/settings.less"
     </div>
     <div class="col-lg-8 col-md-9">
         <h4>Select your bitcoin wallet provider for instructions</h4>
-        <select class="form-control">
-            <option>-- select --</option>
+        <select
+            class="form-control"
+            name="wallet_code"
+            data-request="onAjax"
+            data-request-update="'settings/wallet-card': '#partialSettingsWalletCard'">
+            <option value="">-- select --</option>
             <optgroup label="Hardware wallets">
-                <option>TREZOR</option>
+                <option value="trezor">TREZOR</option>
             </optgroup>
             <optgroup label="Software wallets">
-                <option>Bitcoin.com</option>
+                <option value="bitcoincom">Bitcoin.com</option>
             </optgroup>
         </select>
+
+        <div id="partialSettingsWalletCard"></div>
     </div>
 </div>
 

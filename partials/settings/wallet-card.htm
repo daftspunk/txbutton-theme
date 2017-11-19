@@ -1,0 +1,11 @@
+{% set code = post('wallet_code') %}
+{% set cardPartial = 'wallet-cards/' ~ code %}
+
+{% if not code %}
+    {# Do nothing #}
+{# elseif partial(cardPartial) #}
+{% elseif this.controller.renderPartial(cardPartial, [], false) %}
+    {% partial cardPartial %}
+{% else %}
+    <p>Card not found!</p>
+{% endif %}

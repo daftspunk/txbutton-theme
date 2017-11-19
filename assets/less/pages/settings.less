@@ -4,6 +4,7 @@
 
 @import "../theme/boot";
 
+@highlight-background: #FFF8D4;
 
 .wallet-address-sequence {
     table td:first-child {
@@ -30,5 +31,26 @@
 
     .form-group {
         margin-bottom: 25px;
+    }
+}
+
+.wallet-guide-response {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: @highlight-background;
+    position: relative;
+
+    h5 {
+        margin-top: 40px;
+        &:first-child {
+            margin-top: 12.5px;
+        }
+    }
+
+    &:before {
+        .triangle(up, 32px, 20px, @highlight-background);
+        top: -16px;
+        left: 22px;
+        position: absolute;
     }
 }

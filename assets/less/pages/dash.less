@@ -22,12 +22,12 @@
         margin: 15px;
         margin-top: 0;
 
-        &:hover {
+        &:hover:not(.is-disabled) {
             border-color: transparent;
             box-shadow: 0 2px 7px rgba(0,0,0,.2);
         }
 
-        &:active {
+        &:active:not(.is-disabled) {
             border-color: transparent;
             box-shadow: inset 0 2px 7px rgba(0,0,0,.2);
             background: #f0f0f0;
@@ -49,6 +49,25 @@
         .app-name {
             margin-top: 5px;
             font-size: 18px;
+        }
+
+        &.is-disabled {
+            opacity: .7;
+        }
+    }
+}
+
+.dash-notices {
+    margin: 0 15px 0 15px;
+
+    .notice-icon {
+        i {
+            margin-top: 5px;
+            font-size: 48px;
+        }
+
+        img {
+            max-width: 48px;
         }
     }
 }

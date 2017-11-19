@@ -1,4 +1,31 @@
-{% if posConfigured %}
+{% if not wallet %}
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Wallet not found</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="well">
+            <div class="text-danger">
+                It looks like you haven't set up a valid wallet yet.
+                Please proceed to the wallet set up page before opening the POS terminal.
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a
+            href="{{ 'settings/wallet'|page }}"
+            class="btn btn-primary btn-fancy">Wallet Settings</a>
+        <button
+            class="btn btn-default"
+            data-dismiss="modal">
+            Close
+        </button>
+    </div>
+
+{% elseif posConfigured %}
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
