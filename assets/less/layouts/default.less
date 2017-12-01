@@ -14,8 +14,6 @@ body {
 }
 
 #layout-header-container {
-    padding-top: 40px;
-    padding-bottom: 0;
     position: relative;
 }
 
@@ -27,7 +25,7 @@ header#layout-header {
 
     h1.logo {
         font-size: 48px;
-        margin: 0;
+        margin: 20px 0 0 0;
         color: white;
         font-weight: bold;
         a {
@@ -106,7 +104,34 @@ header#layout-header {
     }
 }
 
+#layout-user-panel {
+    padding-bottom: 10px;
+    text-align: right;
+
+    .user-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+
+        padding: 5px 15px;
+        font-size: 13px;
+        color: #fff;
+        display: inline-block;
+        background: darken(#3097d1, 12%);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    a {
+        color: #ECF0F1;
+        &:hover { color: #fff; }
+    }
+}
+
 nav#layout-nav {
+    padding-top: 20px;
+
     * {
         border-color: transparent !important; 
     }
