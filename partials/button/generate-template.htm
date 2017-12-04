@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-2 text-center hidden-sm hidden-xs page-side-icon">
+        <i class="icon icon-check"></i>
+    </div>
+    <div class="col-lg-8 col-md-9">
+        <h4>Button code</h4>
+        <p>
+            Here is your payment button HTML code, you can paste this anywhere on your website and start accepting payments.
+        </p>
+
+        <div class="button-markup-container">
+            <textarea class="form-control" id="buttonMarkupTextarea"></textarea>
+            <button class="btn btn-default btn-fancy btn-block" data-clipboard-target="#buttonMarkupTextarea">
+                <i class="icon icon-clipboard m-r-xs"></i>
+                Copy to clipboard
+            </button>
+        </div>
+    </div>
+</div>
+
+{% verbatim %}
+<script type="text/template" id="buttonGenerateTemplate">
+<form method="POST" action="{{ 'cgi-bin/webscr'|app }}">
+    <input type="hidden" name="business" value="{{business}}" />
+    <input type="hidden" name="currency_code" value="{{currency_code}}" />
+    {{#invoice}}
+    <input type="hidden" name="invoice" value="{{invoice}}" />
+    {{/invoice}}
+    <input type="hidden" name="quantity_1" value="{{quantity_1}}" />
+    <input type="hidden" name="item_name_1" value="{{item_name_1}}" />
+    <input type="hidden" name="amount_1" value="{{amount_1}}" />
+    <input type="hidden" name="notify_url" value="{{{notify_url}}}" />
+    <input type="hidden" name="return" value="{{{return}}}" />
+    <input type="hidden" name="cancel_return" value="{{{cancel_return}}}" />
+    <input type="image" name="submit"
+        src="{{{button_image}}}"
+        alt="TxButton - Bitcoin payments with the click of a button"
+        style="width: auto; height: 80px" />
+</form>
+</script>
+{% endverbatim %}

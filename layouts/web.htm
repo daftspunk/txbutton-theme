@@ -1,0 +1,30 @@
+description = "Web layout"
+
+[resources]
+less[] = "layouts/web.less"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        {% partial 'site/meta' %}
+    </head>
+    <body ontouchstart="">
+
+        <!-- Flash messages -->
+        {% partial 'site/flash-messages' %}
+
+        <!-- Header -->
+        <section id="layout-header">
+            {% partial 'web/header' %}
+        </section>
+
+        <!-- Content -->
+        <section id="layout-content">
+            {% page %}
+        </section>
+
+        <!-- Scripts -->
+        {% partial 'site/scripts' %}
+
+    </body>
+</html>

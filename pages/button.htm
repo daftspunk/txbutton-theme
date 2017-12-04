@@ -1,75 +1,40 @@
-title = "Settings"
+title = "Button"
 url = "/button"
 layout = "default"
 
 [resources]
 vars[currentPage] = ""
 less[] = "pages/button.less"
+js[] = "../vendor/mustache/mustache.js"
+js[] = "../vendor/clipboard/clipboard.js"
+js[] = "pages/button.js"
 
 [buttonGenerator]
 ==
 <div class="row">
     <div class="col-md-2 text-center hidden-sm hidden-xs page-side-icon">
         <i class="icon icon-magic"></i>
+
+        <ul class="nav nav-pills nav-stacked m-t">
+            <li role="presentation" class="active"><a href="#generate" data-toggle="pill">Generate</a></li>
+            <li role="presentation"><a href="#docs" data-toggle="pill">Docs</a></li>
+        </ul>
     </div>
     <div class="col-lg-8 col-md-9">
-        {{ form_ajax('onCreateButton', { flash: 1, class: 'button-form' }) }}
-            <p>
-                Payment buttons are an easy way to accept payments on your website.
-                Use this page to customise your buton and create the HTML you'll need to copy and paste into your website.
-            </p>
 
-            <div class="form-group">
-                <label>Item name</label>
-                <input
-                    name="item_name"
-                    value=""
-                    autocomplete="off"
-                    type="text"
-                    class="form-control" />
+        <div class="tab-content">
+            <div class="tab-pane active" id="generate">
+                {% partial 'button/tab-generate' %}
             </div>
-
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label>Price</label>
-                    <input
-                        name="pos_pin"
-                        value="{{ settings.pos_pin }}"
-                        autocomplete="off"
-                        type="text"
-                        class="form-control" />
-                </div>
-                <div class="form-group col-md-3">
-                    <label>Currency</label>
-                    <select name="currency_code" class="form-control">
-                        {% for code, label in currencies %}
-                            <option {{ settings.currency_code == code ? 'selected' }} value="{{ code }}">{{ code }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <div class="tab-pane" id="docs">
+                {% partial 'button/tab-docs' %}
             </div>
+        </div>
 
-            <div class="form-group">
-                <label>Merchant account ID</label>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="merchant_id" value="secure" checked />
-                        Use my secure merchant account ID
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="merchant_id" value="email" />
-                        Use my primary email address ({{ user.email }})
-                    </label>
-                </div>
-            </div>
-
-            <hr />
-
-            <button type="submit" class="btn btn-success btn-fancy">
-                Create button
-            </button>
-        {{ form_close() }}
     </div>
+</div>
+
+<div id="buttonResultsContainer" style="display: none">
+    <hr />
+    {% partial 'button/generate-template' %}
 </div>

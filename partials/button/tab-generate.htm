@@ -1,0 +1,123 @@
+<form class="button-form" id="buttonForm" onsubmit="return generateButton()">
+    <p>
+        Payment buttons are an easy way to accept payments on your website.
+        Use this page to customise your buton and create the HTML you'll need to copy and paste into your website.
+    </p>
+
+    <input type="hidden" name="merchant_email" value="{{ user.email }}" />
+    <input type="hidden" name="merchant_secure" value="{{ settings.getWebId }}" />
+    <input type="hidden" name="button_image" value="{{ 'assets/images/button-pay.png'|theme }}" />
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Currency</label>
+            <select name="currency_code" class="form-control">
+                {% for code, label in currencies %}
+                    <option {{ settings.currency_code == code ? 'selected' }} value="{{ code }}">{{ code }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Invoice <small>(optional)</small></label>
+            <input
+                name="invoice"
+                value=""
+                autocomplete="off"
+                type="text"
+                class="form-control" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-2">
+            <label>Quantity</label>
+            <input
+                name="quantity_1"
+                value="1"
+                autocomplete="off"
+                type="text"
+                class="form-control" />
+        </div>
+        <div class="form-group col-md-7">
+            <label>Item name</label>
+            <input
+                name="item_name_1"
+                value=""
+                placeholder="eg: Website donation"
+                autocomplete="off"
+                type="text"
+                class="form-control" />
+        </div>
+        <div class="form-group col-md-3">
+            <label>Amount</label>
+            <input
+                name="amount_1"
+                value=""
+                placeholder="0.00"
+                autocomplete="off"
+                type="text"
+                class="form-control"
+                required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Return URL</label>
+        <input
+            name="return"
+            value=""
+            autocomplete="off"
+            type="text"
+            placeholder="http://"
+            class="form-control"
+            required />
+        <p class="help-block">Redirect to this web address on successful payment.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Cancel URL <small>(optional)</small></label>
+        <input
+            name="cancel_return"
+            value=""
+            autocomplete="off"
+            type="text"
+            placeholder="http://"
+            class="form-control" />
+        <p class="help-block">Redirect when the user cancels the transaction.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Notify URL</label>
+        <input
+            name="notify_url"
+            value=""
+            autocomplete="off"
+            type="text"
+            placeholder="http://"
+            class="form-control" />
+        <p class="help-block">Instant payment notification (IPN) web address.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Merchant account ID</label>
+        <div class="radio">
+            <label>
+                <input type="radio" name="merchant_id" value="secure" checked />
+                Use my secure merchant account ID
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="merchant_id" value="email" />
+                Use my primary email address ({{ user.email }})
+            </label>
+        </div>
+    </div>
+
+    <button
+        class="btn btn-success btn-fancy"
+        type="submit">
+        Generate button
+    </button>
+
+</form>
