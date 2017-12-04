@@ -8,6 +8,10 @@ html {
     font-size: 70%;
 }
 
+body {
+    font-size: 1.43rem;
+}
+
 // MD
 @media (min-width: 992px) and (max-width: 1199px) {
     html { font-size: 62.5%; }
@@ -26,7 +30,6 @@ html {
 // XS
 @media (max-width: 767px) {
     html { font-size: 52.5%; }
-    body:not(.standalone-mode) { padding-top: 0; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,18 +43,156 @@ h4 { font-size: 2.0rem }
 h5 { font-size: 1.6rem }
 h6 { font-size: 1.4rem }
 
+.header-primary {
+    color: darken(@brand-primary, 10%);
+}
 
 #layout-header {
     border-bottom: .5rem solid @brand-primary;
     padding: 2.2rem 0;
 
     h1 {
-        margin: 1.5rem 0 0 0;
+        margin: 1.5rem 0 0 2rem;
         font-size: 3rem;
     }
 }
 
+#layout-footer {
+    padding: 2.2rem 0;
+    font-size: 1.2rem;
+
+    p { margin: 0; }
+}
+
 #layout-content {
+    border-top: 2px solid #fff;
     box-shadow: inset 0 20px 10px -10px rgba(0,0,0,.1);
     padding-top: 35px;
+}
+
+.order-summary-container {
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.order-summary {
+    padding: 2rem;
+
+    .order-table {
+        font-size: 1.32rem;
+
+        thead th {
+            background: #f0f0f0;
+        }
+        tbody td {
+            p { margin: 0; }
+        }
+        tfoot td {
+            font-weight: bold;
+        }
+    }
+}
+
+.order-option-container {
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.order-cancel {
+    padding-top: 1rem;
+}
+
+.order-option {
+    // 20px instead of 2rem to match m-b
+    padding: 20px;
+
+    h6 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: #999;
+    }
+
+     p.text-lg {
+        font-size: 1.7rem;
+        font-weight: bold;
+    }
+}
+
+.order-payment-options {
+    text-align: center;
+    padding-top: 2.4rem;
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        padding-top: 1.6rem;
+    }
+
+    @media (max-width: 991px) {
+        padding-top: 0;
+    }
+
+    .payment-button {
+        margin: 2rem 0 1.5rem;
+    }
+
+    .payment-link {
+        //font-size: 1.2rem;
+    }
+
+    .payment-status {
+        margin-bottom: 1.5rem;
+        padding: 2rem 0;
+
+        border-bottom: 1px solid #f0f0f0;
+        h5 {
+            margin: 0;
+        }
+    }
+}
+
+.order-option-loading {
+    //background: #e0e0e0;
+}
+
+.payment-qrcode {
+    //margin: 2rem 0;
+
+    img {
+        display: none !important;
+    }
+
+    canvas {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        max-width: 20rem;
+        margin: 0 auto;
+    }
+}
+
+//
+// Desktop
+//
+
+@media (min-width: 992px) {
+    .order-summary {
+        min-height: 550px;
+    }
+    .order-option-container {
+        border-left: none;
+        margin-left: -30px;
+        padding-left: 30px;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .order-option {
+        padding-left: 0;
+    }
+    .payment-qrcode {
+        canvas {
+            max-width: none;
+        }
+    }
 }

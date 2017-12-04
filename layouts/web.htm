@@ -15,12 +15,30 @@ less[] = "layouts/web.less"
 
         <!-- Header -->
         <section id="layout-header">
-            {% partial 'web/header' %}
+            <div class="container">
+                <h1>Spunky's Test Store</h1>
+            </div>
         </section>
 
         <!-- Content -->
         <section id="layout-content">
             {% page %}
+        </section>
+
+        <section id="layout-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>TxButton. Bitcoin transactions with the click of a button.</p>
+                        <p>
+                            For more information, read our
+                            <a href="{{ 'terms/agreement'|page }}" target="_blank">User Agreement</a>
+                            and
+                            <a href="{{ 'terms/privacy'|page }}" target="_blank">Privacy Policy</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Scripts -->

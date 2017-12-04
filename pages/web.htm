@@ -1,8 +1,107 @@
-title = "Pay button"
+title = "Pay with Bitcoin"
 url = "/web/:hash"
 layout = "web"
+
+[resources]
+js[] = "pages/web.js"
 ==
+{% set address = '3ECKq7onkjnRQR2nNe5uUJp2yMsXRmZavC' %}
+{% set amount = '0.02747' %}
 <div class="container">
-    
-    <button class="btn btn-primary btn-fancy">Return to store</button>
+    <div class="row">
+        <div class="col-md-5 col-lg-4">
+            <div class="order-summary-container">
+                <div class="order-summary">
+                    <h5 class="text-center m-b">Your order summary</h5>
+
+                    <table class="table order-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th class="text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>My Test Item</p>
+                                    <p>Item number: 1234</p>
+                                    <p>Item price: $43.00</p>
+                                    <p>Quantity: 1</p>
+                                </td>
+                                <td class="text-right">$43.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Item total</td>
+                                <td class="text-right">$43.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="100" class="text-right">
+                                    Total $43.00 USD
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h4 class="header-primary m-t-md m-b">Pay using Bitcoin Cash</h4>
+            <div class="order-option-container">
+                <div class="order-option">
+                    <p class="m-b">Send Bitcoin Cash (BCH) to the address below to complete your purchase.</p>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div
+                                id="qrcode"
+                                class="payment-qrcode"
+                                data-address="{{ address }}"></div>
+                        </div>
+                        <div class="col-md-7 order-payment-options">
+                            <div class="payment-status">
+                                <h5 class="text-warning animate-flicker">
+                                    Transaction pending
+                                </h5>
+                            </div>
+                            <div class="payment-button">
+                                <a href="bitcoin:{{ address }}"
+                                    class="btn btn-primary btn-fancy">
+                                    <i class="icon icon-bitcoin m-r-sm"></i>Pay with Bitcoin Cash
+                                </a>
+                            </div>
+                            <div class="payment-link">
+                                <a
+                                    href="https://bitcoincash.blockexplorer.com/address/{{ address }}"
+                                    target="_blank">
+                                    View on blockchain
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-md-4">
+                            <h6>Pay exactly</h6>
+                            <p class="text-lg">{{ amount }} BCH</p>
+                        </div>
+                        <div class="col-sm-9 col-md-9 col-lg-8">
+                            <h6>To address</h6>
+                            <p class="text-lg">
+                                {{ address }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-cancel">
+                <a href="#">
+                    Cancel and return to Spunky's Test Store.
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

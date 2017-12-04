@@ -26,15 +26,15 @@
     {{#invoice}}
     <input type="hidden" name="invoice" value="{{invoice}}" />
     {{/invoice}}
-    <input type="hidden" name="quantity_1" value="{{quantity_1}}" />
-    <input type="hidden" name="item_name_1" value="{{item_name_1}}" />
-    <input type="hidden" name="amount_1" value="{{amount_1}}" />
+    <input type="hidden" name="quantity" value="{{quantity}}" />
+    <input type="hidden" name="item_name" value="{{item_name}}" />
+    <input type="hidden" name="amount" value="{{amount}}" />
     <input type="hidden" name="notify_url" value="{{{notify_url}}}" />
     <input type="hidden" name="return" value="{{{return}}}" />
     <input type="hidden" name="cancel_return" value="{{{cancel_return}}}" />
     <input type="image" name="submit"
         src="{{{button_image}}}"
-        alt="TxButton - Bitcoin payments with the click of a button"
+        alt="TxButton - Bitcoin transactions with the click of a button"
         style="width: auto; height: 80px" />
 </form>
 </script>
